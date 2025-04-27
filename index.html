@@ -2,12 +2,10 @@
 <html>
 <head>
   <title>Email Confirmed</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
     
     :root {
-      /* Light theme variables */
       --bg-color: rgba(255, 255, 255, 0.15);
       --text-color: #333;
       --heading-gradient-1: #48cae4;
@@ -20,7 +18,6 @@
     
     @media (prefers-color-scheme: dark) {
       :root {
-        /* Dark theme variables */
         --bg-color: rgba(30, 30, 45, 0.75);
         --text-color: #f0f0f0;
         --heading-gradient-1: #90e0ef;
@@ -180,6 +177,23 @@
   <div class="content">
     <h1>Email Successfully Confirmed!</h1>
     <p>Your email has been verified and your account is now active. You're all set to enjoy the full experience.</p>
+    <a href="https://yourdomain.com" class="button">Return to App</a>
   </div>
+
+  <script>
+    // Check if we have code parameter in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    
+    if (code) {
+      // If we have a confirmation code, display success message
+      document.querySelector('h1').textContent = 'Email Successfully Confirmed!';
+      document.querySelector('p').textContent = 'Your email has been verified and your account is now active. You\'re all set to enjoy the full experience.';
+    } else {
+      // If no code is found, show a generic message
+      document.querySelector('h1').textContent = 'Authentication';
+      document.querySelector('p').textContent = 'Processing your request...';
+    }
+  </script>
 </body>
 </html>
